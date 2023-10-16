@@ -34,14 +34,12 @@
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
-                    FontSize="18"
-                    Text="MAUI sample app with NLog and Microsoft AppCenter logging." />
+                    Text="MAUI sample app with NLog and Microsoft AppCenter logging and error tracking." />
 
             </Grid>
 
             <Label
-                BackgroundColor="{AppThemeBinding Light={StaticResource White},
-                                                  Dark={StaticResource Primary}}"
+                BackgroundColor="{StaticResource Tertiary}"
                 FontSize="24"
                 Text="AppCenterAnalyticsTarget" />
             <Entry
@@ -57,8 +55,7 @@
                 Text="Log Message" />
 
             <Label
-                BackgroundColor="{AppThemeBinding Light={StaticResource White},
-                                                  Dark={StaticResource Primary}}"
+                BackgroundColor="{StaticResource Tertiary}"
                 FontSize="24"
                 Text="AppCenterCrashesTarget" />
             <Entry
