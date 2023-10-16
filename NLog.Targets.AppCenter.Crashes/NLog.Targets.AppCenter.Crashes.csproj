@@ -7,8 +7,9 @@
 		<IsPackable>true</IsPackable>
 		<LangVersion>latest</LangVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
-
+	
 	<!--NuGet package-->
 	<PropertyGroup>
 		<Product>NLog.Targets.AppCenter.Crashes</Product>
@@ -46,4 +47,13 @@
 	<ItemGroup>
 		<ProjectReference Include="..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" />
 	</ItemGroup>
+
+	<Target Name="PackBuildOutputs">
+		<ItemGroup>
+			<!-- Add the referenced assembly to the nuget package -->
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.dll" PackagePath="lib/netstandard2.0" />
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.pdb" PackagePath="lib/netstandard2.0" />
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.xml" PackagePath="lib/netstandard2.0" />
+		</ItemGroup>
+	</Target>
 </Project>
