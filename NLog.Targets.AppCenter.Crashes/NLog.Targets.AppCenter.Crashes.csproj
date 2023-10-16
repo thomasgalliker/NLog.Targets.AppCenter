@@ -45,7 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" />
+		<ProjectReference Include="..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" PrivateAssets="All" />
 	</ItemGroup>
 
 	<Target Name="PackBuildOutputs">
