@@ -39,6 +39,11 @@
 
             </Grid>
 
+            <Label
+                BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                                  Dark={StaticResource Primary}}"
+                FontSize="24"
+                Text="AppCenterAnalyticsTarget" />
             <Entry
                 Placeholder="Enter a log message here"
                 Text="{Binding Message}" />
@@ -51,6 +56,11 @@
                 HorizontalOptions="Fill"
                 Text="Log Message" />
 
+            <Label
+                BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                                  Dark={StaticResource Primary}}"
+                FontSize="24"
+                Text="AppCenterCrashesTarget" />
             <Entry
                 Placeholder="Enter an exception message here"
                 Text="{Binding ExceptionMessage}" />
@@ -58,6 +68,10 @@
                 Command="{Binding LogErrorCommand}"
                 HorizontalOptions="Fill"
                 Text="Log Exception" />
+            <Button
+                Command="{Binding ThrowUnhandledExceptionCommand}"
+                HorizontalOptions="Fill"
+                Text="Throw Unhandled Exception" />
 
         </VerticalStackLayout>
     </ScrollView>

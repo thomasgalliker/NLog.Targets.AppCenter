@@ -37,7 +37,15 @@ namespace MauiSampleApp
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
 
-            return builder.Build();
+            var mauiApp = builder.Build();
+
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            return mauiApp;
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            NLog.LogManager.Shutdown();
         }
     }
 }

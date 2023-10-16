@@ -14,6 +14,7 @@ namespace MauiSampleApp.ViewModels
         private string exceptionMessage;
         private RelayCommand logCommand;
         private LogLevel logLevel;
+        private RelayCommand throwUnhandledExceptionCommand;
 
         public MainViewModel(ILogger<MainViewModel> logger)
         {
@@ -59,6 +60,13 @@ namespace MauiSampleApp.ViewModels
         private void LogError()
         {
             this.logger.LogError(new Exception(this.ExceptionMessage), this.ExceptionMessage);
+        }
+
+        public ICommand ThrowUnhandledExceptionCommand => this.throwUnhandledExceptionCommand ??= new RelayCommand(this.ThrowUnhandledException);
+
+        private void ThrowUnhandledException()
+        {
+            throw new InvalidOperationException(this.ExceptionMessage);
         }
     }
 }
