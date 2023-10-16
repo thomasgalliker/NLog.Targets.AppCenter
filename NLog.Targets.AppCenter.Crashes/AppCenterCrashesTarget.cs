@@ -196,19 +196,7 @@ namespace NLog.Targets.AppCenter.Crashes
 
         private void TrackError(LogEventInfo logEvent, Exception exception)
         {
-            var properties = this.BuildProperties(logEvent) ?? new Dictionary<string, string>(2);
-            if (properties.Count < Constants.MaxPropertyCount)
-            {
-                if (!properties.ContainsKey("Message"))
-                {
-                    var message = this.RenderLogEvent(this.Layout, logEvent);
-                    if (!string.IsNullOrWhiteSpace(message))
-                    {
-                        properties["Message"] = message;
-                    }
-                }
-            }
-
+            var properties = this.BuildProperties(logEvent);
             this.appCenterCrashes.TrackError(exception, properties);
         }
 

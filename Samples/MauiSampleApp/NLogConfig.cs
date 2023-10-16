@@ -115,8 +115,13 @@ namespace MauiSampleApp
             });
             appCenterCrashesTarget.ContextProperties.Add(new TargetPropertyWithContext
             {
-                Name = "exception",
+                Name = "exception.Type",
                 Layout = "${exception:format=type}"
+            });
+            appCenterCrashesTarget.ContextProperties.Add(new TargetPropertyWithContext
+            {
+                Name = "exception.Message",
+                Layout = "${exception:format=message}"
             });
 
             config.AddTarget("AppCenterCrashesTarget", appCenterCrashesTarget);
