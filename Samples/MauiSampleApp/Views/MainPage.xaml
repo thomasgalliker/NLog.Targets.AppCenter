@@ -39,7 +39,7 @@
             </Grid>
 
             <Label
-                BackgroundColor="{StaticResource Tertiary}"
+                FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterAnalyticsTarget" />
             <Entry
@@ -55,7 +55,7 @@
                 Text="Log Message" />
 
             <Label
-                BackgroundColor="{StaticResource Tertiary}"
+                FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterCrashesTarget" />
             <Entry
