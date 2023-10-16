@@ -50,7 +50,10 @@
 
 	<Target Name="PackBuildOutputs">
 		<ItemGroup>
-			<!-- Add the referenced assembly to the nuget package -->
+			<!--Add pdbs-->
+			<TfmSpecificPackageFile Include="$(OutDir)$(AssemblyName).pdb" PackagePath="lib/netstandard2.0" />
+
+			<!--Add the referenced assembly to the nuget package-->
 			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.dll" PackagePath="lib/netstandard2.0" />
 			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.pdb" PackagePath="lib/netstandard2.0" />
 			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.xml" PackagePath="lib/netstandard2.0" />
