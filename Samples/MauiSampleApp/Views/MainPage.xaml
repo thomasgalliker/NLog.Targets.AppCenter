@@ -61,6 +61,10 @@
             <Entry
                 Placeholder="Enter an exception message here"
                 Text="{Binding ExceptionMessage}" />
+            <Picker
+                Title="Exception Type"
+                ItemsSource="{Binding ExceptionNames}"
+                SelectedItem="{Binding ExceptionName}" />
             <Button
                 Command="{Binding LogErrorCommand}"
                 HorizontalOptions="Fill"
