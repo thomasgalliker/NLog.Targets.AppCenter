@@ -15,6 +15,7 @@ namespace MauiSampleApp.ViewModels
         private RelayCommand logCommand;
         private LogLevel logLevel;
         private RelayCommand throwUnhandledExceptionCommand;
+        private string exceptionName;
 
         public MainViewModel(ILogger<MainViewModel> logger)
         {
@@ -26,6 +27,15 @@ namespace MauiSampleApp.ViewModels
                 .Cast<LogLevel>()
                 .ToArray();
             this.LogLevel = LogLevel.Information;
+
+            this.ExceptionNames = new[]
+            {
+                nameof(Exception),
+                nameof(InvalidOperationException),
+                nameof(NotImplementedException),
+                nameof(TaskCanceledException),
+            };
+            this.ExceptionName = null;
         }
 
         public string Message
@@ -55,11 +65,36 @@ namespace MauiSampleApp.ViewModels
             set => this.SetProperty(ref this.exceptionMessage, value);
         }
 
+        public IEnumerable<string> ExceptionNames { get; private set; }
+
+        public string ExceptionName
+        {
+            get => this.exceptionName;
+            set => this.SetProperty(ref this.exceptionName, value);
+        }
+
         public ICommand LogErrorCommand => this.logErrorCommand ??= new RelayCommand(this.LogError);
 
         private void LogError()
         {
-            this.logger.LogError(new Exception(this.ExceptionMessage), this.ExceptionMessage);
+            Exception exception = null;
+            switch (this.ExceptionName)
+            {
+                case nameof(InvalidOperationException):
+                    exception = new InvalidOperationException(this.ExceptionMessage);
+                    break;
+                case nameof(NotImplementedException):
+                    exception = new NotImplementedException(this.ExceptionMessage);
+                    break;
+                case nameof(TaskCanceledException):
+                    exception = new TaskCanceledException(this.ExceptionMessage);
+                    break;
+                default:
+                    exception = new Exception(this.ExceptionMessage);
+                    break;
+            }
+
+            this.logger.LogError(exception, this.ExceptionMessage);
         }
 
         public ICommand ThrowUnhandledExceptionCommand => this.throwUnhandledExceptionCommand ??= new RelayCommand(this.ThrowUnhandledException);

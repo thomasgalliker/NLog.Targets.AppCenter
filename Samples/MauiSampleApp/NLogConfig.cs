@@ -1,5 +1,6 @@
 ﻿using NLog;
 using NLog.Config;
+using NLog.Filters;
 using NLog.Targets;
 using NLog.Targets.AppCenter.Analytics;
 using NLog.Targets.AppCenter.Crashes;
@@ -115,13 +116,26 @@ namespace MauiSampleApp
             });
             appCenterCrashesTarget.ContextProperties.Add(new TargetPropertyWithContext
             {
-                Name = "exception",
+                Name = "exception.Type",
                 Layout = "${exception:format=type}"
+            });
+            appCenterCrashesTarget.ContextProperties.Add(new TargetPropertyWithContext
+            {
+                Name = "exception.Message",
+                Layout = "${exception:format=message}"
             });
 
             config.AddTarget("AppCenterCrashesTarget", appCenterCrashesTarget);
 
+            var ignoredExceptionTypes = new[] {
+                typeof(TaskCanceledException),
+            };
             var appCenterCrashesRule = new LoggingRule("*", LogLevel.Warn, appCenterCrashesTarget);
+            appCenterCrashesRule.Filters.Add(
+                new WhenMethodFilter((l) => l.Exception is Exception ex && ignoredExceptionTypes.Contains(ex.GetType()) 
+                    ? FilterResult.IgnoreFinal 
+                    : FilterResult.Log));
+
             config.LoggingRules.Add(appCenterCrashesRule);
 
             return config;

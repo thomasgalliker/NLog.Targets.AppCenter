@@ -2,24 +2,61 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<Nullable>disable</Nullable>
+		<IsPackable>true</IsPackable>
 		<LangVersion>latest</LangVersion>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+	
+	<!--NuGet package-->
+	<PropertyGroup>
+		<Product>NLog.Targets.AppCenter.Crashes</Product>
+		<Description>NLog target for Microsoft.AppCenter.Crashes</Description>
+		<Version>1.0.0</Version>
+		<Authors>Thomas Galliker</Authors>
+		<PackageId>NLog.Targets.AppCenter.Crashes</PackageId>
+		<PackageTags>AppCenter;NLog;logging;log;crashes;tracking;track</PackageTags>
+		<PackageIconUrl>https://raw.githubusercontent.com/thomasgalliker/NLog.Targets.AppCenter/develop/Images/logo.png</PackageIconUrl>
+		<PackageProjectUrl>https://github.com/thomasgalliker/NLog.Targets.AppCenter</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/thomasgalliker/NLog.Targets.AppCenter</RepositoryUrl>
+		<Company>superdev GmbH</Company>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageReleaseNotes>
+			1.0
+			- Initial release
+		</PackageReleaseNotes>
+		<Copyright>Copyright 2023</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="[5.0.3,)" />
-		<PackageReference Include="NLog" Version="[5.2.4,)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="README.md">
+		<None Include="..\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="[5.0.2,)" />
+		<PackageReference Include="NLog" Version="[5.2.2,)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" PrivateAssets="All" />
+	</ItemGroup>
+
+	<Target Name="PackBuildOutputs">
+		<ItemGroup>
+			<!--Add pdbs-->
+			<TfmSpecificPackageFile Include="$(OutDir)$(AssemblyName).pdb" PackagePath="lib/netstandard2.0" />
+			
+			<!--Add the referenced assembly to the nuget package-->
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.dll" PackagePath="lib/netstandard2.0" />
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.pdb" PackagePath="lib/netstandard2.0" />
+			<TfmSpecificPackageFile Include="$(OutDir)NLog.Targets.AppCenter.xml" PackagePath="lib/netstandard2.0" />
+		</ItemGroup>
+	</Target>
 </Project>

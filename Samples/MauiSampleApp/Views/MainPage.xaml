@@ -34,14 +34,12 @@
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
-                    FontSize="18"
-                    Text="MAUI sample app with NLog and Microsoft AppCenter logging." />
+                    Text="MAUI sample app with NLog and Microsoft AppCenter logging and error tracking." />
 
             </Grid>
 
             <Label
-                BackgroundColor="{AppThemeBinding Light={StaticResource White},
-                                                  Dark={StaticResource Primary}}"
+                FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterAnalyticsTarget" />
             <Entry
@@ -57,13 +55,16 @@
                 Text="Log Message" />
 
             <Label
-                BackgroundColor="{AppThemeBinding Light={StaticResource White},
-                                                  Dark={StaticResource Primary}}"
+                FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterCrashesTarget" />
             <Entry
                 Placeholder="Enter an exception message here"
                 Text="{Binding ExceptionMessage}" />
+            <Picker
+                Title="Exception Type"
+                ItemsSource="{Binding ExceptionNames}"
+                SelectedItem="{Binding ExceptionName}" />
             <Button
                 Command="{Binding LogErrorCommand}"
                 HorizontalOptions="Fill"
