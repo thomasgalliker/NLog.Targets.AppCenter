@@ -61,6 +61,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\NLog.Targets.AppCenter.Analytics\NLog.Targets.AppCenter.Analytics.csproj" />
 	  <ProjectReference Include="..\..\NLog.Targets.AppCenter.Crashes\NLog.Targets.AppCenter.Crashes.csproj" />
+	  <ProjectReference Include="..\..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" />
 	</ItemGroup>
 
 	<Target Name="AddUserSecrets" BeforeTargets="PrepareForBuild" Condition=" '$(UserSecretsId)' != '' ">
