@@ -11,8 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{15C7831D-1C38-4E05-9A17-D7C726C60B0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSampleApp", "Samples\MauiSampleApp\MauiSampleApp.csproj", "{41CDD043-153C-4656-817C-F51D3DB89E14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FDE2173C-CF43-4541-8359-3775353D86DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Targets.AppCenter.Tests", "Tests\NLog.Targets.AppCenter.Tests\NLog.Targets.AppCenter.Tests.csproj", "{608F906B-95FF-417D-A389-E8563946013E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Targets.AppCenter", "NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj", "{8E1BB2D4-F29F-47E9-8512-ED68155613FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,9 +39,27 @@ Global
 		{856D32F3-F4FC-42C0-9939-726850398121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{856D32F3-F4FC-42C0-9939-726850398121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{856D32F3-F4FC-42C0-9939-726850398121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CDD043-153C-4656-817C-F51D3DB89E14}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{608F906B-95FF-417D-A389-E8563946013E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608F906B-95FF-417D-A389-E8563946013E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608F906B-95FF-417D-A389-E8563946013E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608F906B-95FF-417D-A389-E8563946013E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1BB2D4-F29F-47E9-8512-ED68155613FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1BB2D4-F29F-47E9-8512-ED68155613FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1BB2D4-F29F-47E9-8512-ED68155613FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1BB2D4-F29F-47E9-8512-ED68155613FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{41CDD043-153C-4656-817C-F51D3DB89E14} = {15C7831D-1C38-4E05-9A17-D7C726C60B0C}
+		{608F906B-95FF-417D-A389-E8563946013E} = {FDE2173C-CF43-4541-8359-3775353D86DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0169DF98-A0F3-44B6-A259-CB5935FBF290}
