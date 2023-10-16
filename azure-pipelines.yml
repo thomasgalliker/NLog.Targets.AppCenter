@@ -90,15 +90,15 @@ steps:
   inputs:
     command: restore
     projects: |
- **/*.csproj
- !**/Samples/*.csproj
+      **/*.csproj
+      !**/Samples/*.csproj
     
 - task: DotNetCoreCLI@2
   displayName: 'Build solution'
   inputs:
     projects: |
- **/*.csproj
- !**/Samples/*.csproj
+      **/*.csproj
+      !**/Samples/*.csproj
     arguments: '--no-restore --configuration $(buildConfiguration)'
     
 - task: DotNetCoreCLI@2
