@@ -40,7 +40,7 @@ namespace NLog.Targets.AppCenter.Crashes
         public Layout ServiceTypesString { get; set; }
 
         /// <summary>
-        /// The service type(s) to be used when calling <see cref="Microsoft.AppCenter.AppCenter.Start"/>.
+        /// The service type(s) to be used when calling <see cref="Microsoft.AppCenter.AppCenter.Start(string, Type[])"/>.
         /// AppCenter can only be started once, so pass all service types needed during the lifetime of the process.
         /// Default: typeof(Microsoft.AppCenter.Crashes.Crashes)
         /// </summary>
@@ -199,7 +199,6 @@ namespace NLog.Targets.AppCenter.Crashes
 
                         Microsoft.AppCenter.Crashes.Crashes.ShouldAwaitUserConfirmation = () =>
                         {
-                            Microsoft.AppCenter.Crashes.Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
                             return false;
                         };
 
