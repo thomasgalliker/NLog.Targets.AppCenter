@@ -60,6 +60,10 @@
 	  <ProjectReference Include="..\..\NLog.Targets.AppCenter\NLog.Targets.AppCenter.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Utils\" />
+	</ItemGroup>
+
 	<Target Name="AddUserSecrets" BeforeTargets="PrepareForBuild" Condition=" '$(UserSecretsId)' != '' ">
 		<PropertyGroup>
 			<UserSecretsFilePath Condition=" '$(OS)' == 'Windows_NT' ">

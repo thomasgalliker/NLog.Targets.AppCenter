@@ -28,8 +28,8 @@
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
-                    FontSize="32"
-                    Text="Hello, NLog!" />
+                    FontSize="28"
+                    Text="NLog @ AppCenter" />
 
                 <Label
                     Grid.Row="1"

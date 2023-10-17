@@ -8,7 +8,7 @@ namespace MauiSampleApp
         {
             this.InitializeComponent();
 
-            this.MainPage = new NavigationPage(mainPage);
+            this.MainPage = mainPage;
         }
     }
 }
