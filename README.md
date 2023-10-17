@@ -1,6 +1,6 @@
 # NLog.Targets for Microsoft AppCenter
 [![Version](https://img.shields.io/nuget/v/NLog.Targets.AppCenter.Analytics.svg)](https://www.nuget.org/packages/NLog.Targets.AppCenter.Analytics)  [![Downloads](https://img.shields.io/nuget/dt/NLog.Targets.AppCenter.Analytics.svg)](https://www.nuget.org/packages/NLog.Targets.AppCenter.Analytics)
-[![Version](https://img.shields.io/nuget/v/NLog.Targets.AppCenter.Crashes.svg)](https://www.nuget.org/packages/NLog.Targets.AppCenter.Crashes)  [![Downloads](https://img.shields.io/nuget/dt/NLog.Targets.AppCenter.Crashes.svg)](https://www.nuget.org/packages/NLog.Targets.AppCenter.Crashes)
+[![Downloads](https://img.shields.io/nuget/dt/NLog.Targets.AppCenter.Crashes.svg)](https://www.nuget.org/packages/NLog.Targets.AppCenter.Crashes)
 
 
 ### Download and Install

@@ -1,3 +1,5 @@
+using System.Text;
+using Microsoft.AppCenter.Crashes;
 using Moq;
 using Moq.AutoMock;
 using NLog.Targets.AppCenter.Crashes;
@@ -80,6 +82,59 @@ namespace NLog.Targets.AppCenter.Tests
                     d.Count == 2 &&
                     d["exception.Type"] == exception.GetType().FullName &&
                     d["exception.Message"] == exception.Message)), Times.Once);
+            appCenterAnalyticsMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public void ShouldTrackError_WithAttachments_TextFile()
+        {
+            // Arrange
+            var appCenterCrashesMock = this.autoMocker.GetMock<IAppCenterCrashes>();
+            var appCenterAnalyticsMock = this.autoMocker.GetMock<IAppCenterCrashes>();
+            var directoryInfoFactoryMock = this.autoMocker.GetMock<IDirectoryInfoFactory>();
+
+            var fileInfoMock = new Mock<IFileInfo>();
+            fileInfoMock.Setup(f => f.Name)
+                .Returns("log-file-1");
+            fileInfoMock.Setup(f => f.Extension)
+                .Returns(".log");
+            fileInfoMock.Setup(f => f.OpenRead())
+                .Returns(() => new MemoryStream(Encoding.UTF8.GetBytes("Test file content")));
+
+            var directoryInfoMock = new Mock<IDirectoryInfo>();
+            directoryInfoMock.Setup(di => di.Exists)
+                .Returns(true);
+            directoryInfoMock.Setup(di => di.EnumerateFiles(It.IsAny<string>(), SearchOption.AllDirectories))
+                .Returns(new[] { fileInfoMock.Object });
+
+            directoryInfoFactoryMock.Setup(d => d.FromPath(It.IsAny<string>()))
+                .Returns(directoryInfoMock.Object);
+
+            var appCenterCrashesTarget = this.autoMocker.CreateInstance<AppCenterCrashesTarget>(enablePrivate: true);
+            appCenterCrashesTarget.AttachmentsDirectory = "logs";
+
+            var logger = CreateLoggerWithTarget(appCenterCrashesTarget);
+            appCenterAnalyticsMock.Invocations.Clear();
+
+            var exception = new InvalidOperationException("Test exception message");
+
+            // Act
+            logger.Error(exception, "Test message");
+
+            // Assert
+            directoryInfoMock.Verify(d => d.Exists, Times.Once);
+            directoryInfoMock.Verify(d => d.EnumerateFiles(It.IsAny<string>(), It.IsAny<SearchOption>()), Times.Once);
+            directoryInfoMock.VerifyNoOtherCalls();
+
+            directoryInfoFactoryMock.Verify(d => d.FromPath(It.IsAny<string>()), Times.Once);
+            directoryInfoFactoryMock.VerifyNoOtherCalls();
+
+            appCenterAnalyticsMock.Verify(a => a.TrackError(
+                exception,
+                It.IsAny<Dictionary<string, string>>(),
+                It.Is<ErrorAttachmentLog[]>(l =>
+                    l.Length == 1 &&
+                    l[0].FileName == "log-file-1")), Times.Once);
             appCenterAnalyticsMock.VerifyNoOtherCalls();
         }
 

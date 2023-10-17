@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using MauiSampleApp.Utils;
 using MauiSampleApp.ViewModels;
 using MauiSampleApp.Views;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,7 @@ namespace MauiSampleApp
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton(_ => Preferences.Default);
 
             var mauiApp = builder.Build();
 
@@ -45,6 +47,9 @@ namespace MauiSampleApp
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+            var logger = ServiceLocator.Current.GetRequiredService<ILogger<MauiApp>>();
+            logger.LogError(e.ExceptionObject as Exception, "CurrentDomain_UnhandledException");
+
             NLog.LogManager.Shutdown();
         }
     }

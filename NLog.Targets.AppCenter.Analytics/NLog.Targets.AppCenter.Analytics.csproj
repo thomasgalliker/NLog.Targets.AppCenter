@@ -24,9 +24,8 @@
 		<RepositoryUrl>https://github.com/thomasgalliker/NLog.Targets.AppCenter</RepositoryUrl>
 		<Company>superdev GmbH</Company>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-		<PackageReleaseNotes>
-			1.0
-			- Initial release
+		<PackageReleaseNotes>5.0
+- Initial release
 		</PackageReleaseNotes>
 		<Copyright>Copyright 2023</Copyright>
 		<PackageReadmeFile>README.md</PackageReadmeFile>

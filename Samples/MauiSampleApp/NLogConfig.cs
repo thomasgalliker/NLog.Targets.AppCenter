@@ -99,6 +99,9 @@ namespace MauiSampleApp
             appCenterCrashesTarget.AppSecret = appSecret;
             appCenterCrashesTarget.ServiceTypes = serviceTypes;
             appCenterCrashesTarget.WrapExceptionFromLevel = LogLevel.Warn;
+            appCenterCrashesTarget.AttachmentsDirectory = Path.GetDirectoryName(logFilePath);
+            appCenterCrashesTarget.AttachmentsFilePattern = "*.log";
+            //appCenterCrashesTarget.LogManagerFlushTimeout = TimeSpan.FromSeconds(1);
             appCenterCrashesTarget.ContextProperties.Add(new TargetPropertyWithContext
             {
                 Name = "date",
