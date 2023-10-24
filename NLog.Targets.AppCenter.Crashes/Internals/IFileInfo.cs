@@ -2,7 +2,7 @@
 
 namespace NLog.Targets.AppCenter.Crashes.Internals
 {
-    public interface IFileInfo
+    internal interface IFileInfo
     {
         string Name { get; }
         
