@@ -2,12 +2,10 @@
 using MauiSampleApp.Utils;
 using MauiSampleApp.ViewModels;
 using MauiSampleApp.Views;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Extensions.Logging;
-using NLog.Targets.AppCenter.Analytics;
-using NLog.Targets.AppCenter.Crashes;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace MauiSampleApp
 {
@@ -21,7 +19,7 @@ namespace MauiSampleApp
             builder.Services.AddLogging(configure =>
             {
                 configure.ClearProviders();
-                configure.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                configure.SetMinimumLevel(LogLevel.Trace);
                 configure.AddNLog();
             });
 

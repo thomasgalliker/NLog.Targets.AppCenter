@@ -50,7 +50,8 @@ namespace NLog.Targets.AppCenter.Analytics
         public Layout CountryCode { get; set; }
 
         /// <summary>
-        /// Tracks messages only if they're start with this prefix, e.g. [Track].
+        /// Tracks messages only if they're start with this prefix, e.g. "[Track]".
+        /// Default: null.
         /// </summary>
         public string TrackOnlyIfMessageStartsWith { get; set; }
 
@@ -60,7 +61,6 @@ namespace NLog.Targets.AppCenter.Analytics
         public AppCenterAnalyticsTarget()
             : this(new AppCenterWrapper(), new AppCenterAnalyticsWrapper())
         {
-
         }
 
         /// <summary>

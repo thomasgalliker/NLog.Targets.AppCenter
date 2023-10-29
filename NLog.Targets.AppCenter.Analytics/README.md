@@ -8,6 +8,4 @@ Use the following command to install NLog.Targets.AppCenter.Analytics using NuGe
 
 You can use this library in any .NET project compatible to .NET Standard 2.0 and higher.
 
-### API Usage
-> *to be documented*
 
