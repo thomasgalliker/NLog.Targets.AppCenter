@@ -22,7 +22,7 @@ namespace NLog.Targets.AppCenter.Tests
                 c.ForLogger().WriteTo(new AppCenterAnalyticsTarget(appCenterMock.Object, appCenterAnalyticsMock.Object));
             }).LogFactory;
         }
-        
+
         [Fact]
         public void ShouldTrackEvent_WithoutProperties()
         {
