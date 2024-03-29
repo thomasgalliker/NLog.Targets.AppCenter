@@ -1,5 +1,4 @@
-﻿using NLog;
-using NLog.Config;
+﻿using NLog.Config;
 using NLog.Filters;
 using NLog.Targets;
 using NLog.Targets.AppCenter.Analytics;
@@ -65,7 +64,7 @@ namespace MauiSampleApp
 
             // AppCenterAnalyticsTarget
             var appSecret = Secrets.AppCenterApiKey;
-            var serviceTypes = new[] 
+            var serviceTypes = new[]
             {
                 typeof(Microsoft.AppCenter.Analytics.Analytics),
                 typeof(Microsoft.AppCenter.Crashes.Crashes)
@@ -135,8 +134,8 @@ namespace MauiSampleApp
             };
             var appCenterCrashesRule = new LoggingRule("*", LogLevel.Warn, appCenterCrashesTarget);
             appCenterCrashesRule.Filters.Add(
-                new WhenMethodFilter((l) => l.Exception is Exception ex && ignoredExceptionTypes.Contains(ex.GetType()) 
-                    ? FilterResult.IgnoreFinal 
+                new WhenMethodFilter((l) => l.Exception is Exception ex && ignoredExceptionTypes.Contains(ex.GetType())
+                    ? FilterResult.IgnoreFinal
                     : FilterResult.Log));
 
             config.LoggingRules.Add(appCenterCrashesRule);

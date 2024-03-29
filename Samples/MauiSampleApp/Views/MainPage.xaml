@@ -42,9 +42,7 @@
                 FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterAnalyticsTarget" />
-            <Entry
-                Placeholder="Enter a log message here"
-                Text="{Binding Message}" />
+            <Entry Placeholder="Enter a log message here" Text="{Binding Message}" />
             <Picker
                 Title="LogLevel"
                 ItemsSource="{Binding LogLevels}"
@@ -58,9 +56,7 @@
                 FontAttributes="Bold"
                 FontSize="24"
                 Text="AppCenterCrashesTarget" />
-            <Entry
-                Placeholder="Enter an exception message here"
-                Text="{Binding ExceptionMessage}" />
+            <Entry Placeholder="Enter an exception message here" Text="{Binding ExceptionMessage}" />
             <Picker
                 Title="Exception Type"
                 ItemsSource="{Binding ExceptionNames}"

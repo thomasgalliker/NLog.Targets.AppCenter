@@ -1,9 +1,7 @@
-﻿using System.Reflection;
-using MauiSampleApp.Utils;
+﻿using MauiSampleApp.Utils;
 using MauiSampleApp.ViewModels;
 using MauiSampleApp.Views;
 using Microsoft.Extensions.Logging;
-using NLog;
 using NLog.Extensions.Logging;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
